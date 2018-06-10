@@ -1,0 +1,628 @@
+/*
+ * version: 1.1
+*/
+/*
+ * mainview
+ * ===========MAIN VIEW===============
+ * Made for smartphones in portrait mode
+*/
+@font-face {
+    font-family: 'myFirstFont';
+    src: url("/assets/fonts/Akura Popo.ttf")  format('truetype');
+}
+body {
+	background-image: url("/assets/pool_phone_vintage.png");
+    background-size: cover;
+    overflow: hidden;
+    background-position: right bottom;
+    font-family: 'myFirstFont';
+    letter-spacing: 2px;
+}
+.mainview {	
+	height: 100%;
+	width: 100%;
+}
+.header {
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	position: fixed;
+	top: 0px;
+	right: 0px;
+}
+.menuicon {
+	top: 0px;
+	left: 0px;
+}
+.title {
+	width: 100%;
+	text-Align: center;
+	color: white;
+	font-size: 1.5em;
+	font-weight: bold;
+	position: fixed;
+	top: 5px;
+	left: 30px;
+}
+#my-menu:not( .mm-menu ) {
+   display: none;
+}
+#pooltemp {
+	background-image: url("/assets/temperature-512.png");
+    background-Size: contain;
+    background-position: left top;
+    overflow: hidden;
+    background-Repeat: no-repeat;
+    z-index: 99;
+	height: 50px;
+	width: 140px;
+	position: absolute;
+	right: 200px;
+	bottom: 25%;
+	color: white;
+	text-Align: right;
+	font-Size: 2.5em;
+	font-Weight: bold;
+	padding-top: 25px;
+}
+#pooltempBG {
+    background-Color: #176578;
+	opacity: 0.3;
+	height: 80px;
+	width: 140px;
+	position: absolute;
+	right: 195px;
+	bottom: 25%;
+	border-radius: 20px;
+}
+#pump {
+	height: 45px;
+	width: 45px;
+}
+#heatpump {
+	height: 45px;
+	width: 45px;
+}
+#loading {
+	background-image: url("/assets/progressring.gif");
+    background-Size: contain;
+    background-position: left top;
+    overflow: hidden;
+    background-Repeat: no-repeat;
+	height: 150px;
+	width: 150px;
+	position: absolute;
+	right: 50%;
+	top: 30%;
+	display: none;
+}
+#controls {
+	position: absolute;
+	left: 0px;
+	top: 60px;
+	color: white;
+	font-size: 0.2em;
+}
+#controls h1{
+	display: none;
+	font-size: 1.8em;
+}
+.controlsBG {
+	background-Color: black;
+	opacity: 0.6;
+	position: absolute;
+	left: -8px;
+	top: 50px;
+	height: 200px;
+	width: 220px;
+	color: white;
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 25px;
+}
+.info {
+	font-size: 1em;
+	position: absolute;
+	right: 30px;
+	bottom: 20px;
+	color: white;float
+}
+.info h1 {
+	display: none;
+	font-size: 1.8em;
+}
+.infoBG {
+	display: none;
+	background-Color: black;
+	opacity: 0.6;
+	position: absolute;
+	right: -8px;
+	top: 50px;
+	height: 180px;
+	width: 30%;
+	color: white;
+	border-top-left-radius: 25px;
+	border-bottom-left-radius: 25px;
+}
+/* The switch - the box around the slider */
+.poolswitch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 26px;
+}
+
+/* Hide default HTML checkbox */
+.poolswitch input {display:none;}
+
+/* The slider */
+.poolslider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #39404b;
+  -webkit-transition: .4s;
+  transition: .4s;
+  -webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+}
+
+.poolslider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 2px;
+  bottom: 2px;
+  background-color: #f6f6ee;
+  -webkit-transition: .4s;
+  transition: .4s;
+  -webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+}
+
+input:checked + .poolslider {
+}
+
+input:focus + .poolslider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .poolslider:before {
+  -webkit-transform: translateX(22px);
+  -ms-transform: translateX(22px);
+  transform: translateX(22px);
+}
+.pooltable td {
+	color: white;
+	padding-left: 10px;
+	font-weight: bold;
+}
+.button {
+	background-color: #60c0af;
+	color: white;
+	border: none;
+	box-shadow: none;
+	width: 100px;
+	height: 36px;
+	font-weight: bold;
+	border-radius: 12px;
+    text-decoration: none;
+	cursor:pointer;
+}
+.buttonControls {
+	position: absolute;
+	bottom: -25px;
+	left: 0px;
+	display: initial;
+	-webkit-column-count: 1;
+     -moz-column-count: 1;
+          column-count: 1;
+}
+.iconbutton {
+	display:initial;
+	cursor:pointer;
+	border: none;
+	box-shadow: none;
+	border-radius: 50%;
+	height: 45px;
+	width: 45px;
+	margin: 2.5px;
+}
+.miscControls {
+	position: absolute;
+	height:100px;
+	width: 50px;
+	bottom: 2%;
+	left: 0px;
+	display: initial;
+}
+#updated {
+	display: none;
+}
+.settingsview {
+	position:absolute;
+	background-image: url("/assets/pool_vintage2.png");
+    background-size: cover;
+    overflow: hidden;
+	height: 97%;
+	width: 97%;
+	z-index:1;
+	-webkit-filter: blur(7px);
+	-moz-filter: blur(7px);
+	-o-filter: blur(7px);
+	-ms-filter: blur(7px);
+	filter: blur(7px);
+}
+.settings {
+	position:relative;
+	height: 90%;
+	width: 90%;
+	z-index:2;
+	color:white;
+	top:5%;
+	left:10%;
+	font-size:100%;
+}
+
+.input {
+    background-color: rgba(0, 0, 0, 0.15);
+    color: white;
+    border: 0px;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    font-size: 100%;
+    text-align: center;
+    -webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	width: 60%;
+}
+.latestruninput {
+    background-color: rgba(0, 0, 0, 0.15);
+    color: white;
+    border: 0px;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    font-size: 100%;
+    text-align: center;
+    -webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	width: 78%;
+}
+.settingscontent {
+	-webkit-column-count: 1;
+     -moz-column-count: 1;
+          column-count: 1;
+}
+.settingcol {
+	float: left;
+	width: 40%;
+}
+#wicon {
+	float: left;
+}
+#weathercond {
+	float: left;
+	padding-top: 6%;
+	padding-left: 5px;
+}
+#forecast {
+	width: 100%;
+}
+#weather {
+	display: none;
+	clear: both;
+}
+#wficon {
+	float: left;
+}
+#wfcond {
+	float: left;
+	padding-top: 6%;
+	padding-left: 5px;
+	font-size: 1em;
+}
+#forecasttime {
+	float: left;
+	padding-top: 6%;
+	width: 35px;
+}
+#now {
+	display: none;
+	float: left;
+	padding-top: 6%;
+	width: 50px;
+}
+#weatherlink {
+	position: relative;
+	clear: both;
+	font-size: 0.8em;
+}
+#weatherlink a{
+	text-decoration: none;
+	color: white;
+}
+.graphview {
+	position:absolute;
+	background-image: url("/assets/pool_vintage2.png");
+    background-size: cover;
+    overflow: hidden;
+	height: 97%;
+	width: 97%;
+	z-index:0;
+	-webkit-filter: blur(7px);
+	-moz-filter: blur(7px);
+	-o-filter: blur(7px);
+	-ms-filter: blur(7px);
+	filter: blur(7px);
+}
+.graphs {
+	position:relative;
+	height: 90%;
+	width: 90%;
+	z-index:2;
+	color:white;
+	top:5%;
+	left:10%;
+	font-size:100%;
+}
+.nowplaying {
+	display: none;
+}
+/* endmainview
+ * mainviewlandscape
+ * ==========MAIN VIEW LANDSCAPE============
+ * Corrections from main view to fit smart 
+ * phones in landscape mode
+*/
+@media screen and (max-height: 500px) {
+body {
+	background-image: url("/assets/pool_vintage2.png");
+}
+#sundial {
+	display: none;
+}
+/*
+#pooltemp {
+	left: 35%;
+	bottom: 15%;
+}*/
+.miscControls {
+	display: none;
+}
+.buttonControls {
+	display: none;
+}
+.settings {
+	overflow: auto;
+	height: 80%
+}
+.nowplaying {
+	display: inherit;
+}
+}
+/* endmainviewlandscape
+ * tabletviewlandscape
+ * ==========TABLET VIEW LANDSCAPE============
+ * Corrections from main view to fit tablets 
+ * in landscape mode
+*/
+@media screen and (min-width: 1099px) and (min-height: 550px) and (orientation: landscape){
+body {
+	background-image: url("/assets/pool_vintage2.png");
+}
+/*
+#pooltemp {
+	height: 100px;
+	width: 250px;
+	position: absolute;
+	left: 35%;
+	bottom: 25%;
+	font-Size: 3em;
+}
+* */
+.title {
+	top: 5px;
+}
+.info {
+	position: absolute;
+	right: -30px;
+	top: 60px;
+	color: white;
+	text-align: left;
+	width: 25%;
+}
+.info h1 {
+	display: initial;
+}
+#sundial {
+	display: table-row;
+}
+.infoBG {
+	width: 27%;
+	display: initial;
+}
+.miscControls {
+	display: initial;
+	-webkit-column-count: 2;
+     -moz-column-count: 2;
+          column-count: 2;
+}
+.settings {
+	font-size:130%;
+}
+.settingcol {
+	float: left;
+	width: 40%
+}
+.settingscontent {
+	-webkit-column-count: 2;
+     -moz-column-count: 2;
+          column-count: 2;
+}
+.input {
+	width: 60%;
+}
+.latestruninput {
+	width: 60%;
+}
+#forecast {
+	display: block;
+	position: relative;
+	top: -20px;
+}
+#now {
+	display: initial;
+}
+#updatedoc {
+	display: initial;
+}
+.nowplaying {
+	display: inherit;
+}
+}
+/* endtabletviewlandscape
+ * desktopviewlandscape
+ * ========DESKTOP VIEW LANDSCAPE=============
+ * Corrections from main view to fit desktops
+*/
+@media screen and (min-width: 1100px) and (min-height: 550px) and (orientation: landscape){
+body {
+	background-image: url("/assets/pool_vintage2.png");
+}
+#pooltemp {
+	height: 80px;
+	width: 250px;
+	right: 800px;
+	font-Size: 4em;
+	padding-top: 40px;
+}
+#pooltempBG {
+    background-Color: #176578;
+	opacity: 0.3;
+	height: 120px;
+	width: 250px;
+	position: absolute;
+	right: 790px;
+	bottom: 25%;
+	border-radius: 20px;
+}
+.title {
+	top: 8px;
+}
+.info {
+	position: absolute;
+	right: -30px;
+	top: 60px;
+	color: white;
+	text-align: left;
+	width: 25%;
+}
+.info h1 {
+	display: initial;
+}
+#sundial {
+	display: table-row;
+}
+.infoBG {
+	display: initial;
+}.controlsBG {
+	width: 240px;
+	height: 230px;
+
+}
+.miscControls {
+	display: initial;
+	height: 50px;
+	width: 50%;
+}
+.settings {
+	font-size:170%;
+}
+.settingcol {
+	float: left;
+	width: 40%;
+}
+.settingscontent {
+	-webkit-column-count: 2;
+     -moz-column-count: 2;
+          column-count: 2;
+}
+.latestruncontent {
+	-webkit-column-count: 1;
+     -moz-column-count: 1;
+          column-count: 1;
+}
+.latestruncol {
+	width: 30%;
+}
+.latestruninput {
+	width: 70%;
+}
+.input {
+	width: 60%;
+}
+#wicon {
+	float: left;
+}
+#weathercond {
+	float: left;
+	padding-top: 6%;
+	padding-left: 5px;
+}
+#weather {
+	display: initial;
+	width: 100%;
+}
+#forecast {
+	display: inital;
+	position: relative;
+	top: -20px;
+}
+#wficon {
+	float: left;
+}
+#wfcond {
+	float: left;
+	padding-top: 6%;
+	padding-left: 5px;
+	font-size: 1em;
+}
+#forecasttime {
+	clear: both;
+	float: left;
+	padding-top: 6%;
+	width: 50px;
+}
+#now {
+	display: initial;
+}
+#weatherlink {
+	top:-20px;
+}
+#controls {
+	font-size: 1em;
+	top: 60px;
+	left: 20px;
+}
+#controls h1{
+	display: initial;
+}
+#updated {
+	display: initial;
+}
+.nowplaying {
+	display: inherit;
+}
+}
+/* 
+ * enddesktoptviewlandscape
+ * 
+ */
