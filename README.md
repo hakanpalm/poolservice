@@ -1,2 +1,2 @@
 # poolservice
-Application to run my pool
+An PHP Application to run my pool
