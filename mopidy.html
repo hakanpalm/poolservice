@@ -1,0 +1,111 @@
+<html>
+<head>
+<style>
+.iconbutton {
+	display:initial;
+	cursor:pointer;
+	border: none;
+	box-shadow: none;
+	border-radius: 50%;
+	height: 25px;
+	width: 25px;
+	margin: 2.5px;
+}
+</style>
+<script type="text/javascript" src="/mopidy/mopidy.min.js"></script>
+<script>
+	var mopidy = new Mopidy({
+		webSocketUrl: "ws://192.168.1.123:6680/mopidy/ws/"
+	});
+	mopidy.on("state:online", function () {
+		var evState = function (state) {
+			console.log(state);
+			switch(state) {
+				case "stopped":
+					document.getElementById('container').style.display="none";
+					document.getElementById('image').style.display="none";
+					document.getElementById('track').style.display="none";
+					document.getElementById('artist').style.display="none";
+					document.getElementById('controlbar').style.display="none";
+					break;
+				case "playing":
+					mopidy.playback.getCurrentTrack().done(printCurrentTrack);
+					break;
+				case "paused":
+					document.getElementById('container').style.display="none";
+					document.getElementById('image').style.display="none";
+					document.getElementById('track').style.display="none";
+					document.getElementById('artist').style.display="none";
+					document.getElementById('controlbar').style.display="none";
+					break;
+			}
+		};
+		var printCurrentTrack = function (track) {
+			if (track) {
+				console.log(track);
+				document.getElementById('track').innerHTML = track.name;
+				document.getElementById('artist').innerHTML = track.artists[0].name;
+				var myuri = [track.uri];
+				var images=function (image){
+					console.log(image[myuri][0].uri);
+					document.getElementById('image').src = image[myuri][0].uri;
+				};
+				mopidy.library.getImages(myuri).done(images);
+				document.getElementById('container').style.display="inherit";
+				document.getElementById('image').style.display="inherit";
+				document.getElementById('track').style.display="inherit";
+				document.getElementById('artist').style.display="inherit";
+				document.getElementById('controlbar').style.display="inherit";
+				
+			} else {
+				console.log("No current track");
+				document.getElementById('container').style.display="none";
+				document.getElementById('image').style.display="none";
+				document.getElementById('track').style.display="none";
+				document.getElementById('artist').style.display="none";
+				document.getElementById('controlbar').style.display="none";
+			}
+		};
+		mopidy.on('event:playbackStateChanged', function (e) {
+					console.log(e.new_state);
+					switch (e.new_state) {
+						case "playing":
+							mopidy.playback.getCurrentTrack().done(printCurrentTrack);
+							break;
+						case "stopped":
+							document.getElementById('container').style.display="none";
+							document.getElementById('image').style.display="none";
+							document.getElementById('track').style.display="none";
+							document.getElementById('artist').style.display="none";
+							document.getElementById('controlbar').style.display="none";
+							break;
+					}
+				});
+		mopidy.on('event:trackPlaybackStarted', function (e) {
+					console.log("Playback started");
+				});
+		mopidy.on('event:trackPlaybackEnded', function (e) {
+				console.log("Playback stopped");
+				});
+		mopidy.on('event:trackPlaybackPaused', function (e) {
+				console.log("Playback paused");
+				});
+		mopidy.playback.getState().done(evState);
+	});
+</script>
+</head>
+<body>
+	<div id="container" style="background-color:black;width:300px;height:360px;opacity: 0.6;border-top-left-radius: 25px;border-bottom-left-radius: 25px;"></div>
+	<div id="container" style="position:absolute;top:0;left:0;">
+		<img id="image" width="200px" height="200px" style="margin:50px; margin-bottom: 10px;"/>
+		<div id="controlbar" style="padding-left: 75px">
+			<button class="iconbutton" style='background:url(assets/play_prev.png) no-repeat;background-Size: contain;' onclick='mopidy.playback.previous();'></button>
+			<button class="iconbutton" style='background:url(assets/paus.png) no-repeat;background-Size: contain;' onclick='mopidy.playback.pause();'></button>
+			<button class="iconbutton" style='background:url(assets/play.png) no-repeat;background-Size: contain;' onclick='mopidy.playback.resume();'></button>
+			<button class="iconbutton" style='background:url(assets/play_next.png) no-repeat;background-Size: contain;' onclick='mopidy.playback.next();'></button>
+		</div>
+		<div id="track" style="color:white;font-size:1.2em;text-align:center;padding-left:25px;padding-right:25px;"></div>
+		<div id="artist" style="color:grey;text-align:center;padding-bottom:50px;"></div>
+	</div>
+</body>
+</html>

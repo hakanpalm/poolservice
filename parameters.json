@@ -1,0 +1,38 @@
+{
+    "parameters": {
+        "sundial": "1",
+        "sunrise": "2018:06:10 03:31:00",
+        "sunset": "2018:06:09 22:02:20",
+        "offset_rise": "0",
+        "offset_set": "0",
+        "poolpump_start": {
+            "Monday": "12:00",
+            "Tuesday": "12:00",
+            "Wednesday": "12:00",
+            "Thursday": "12:00",
+            "Friday": "12:00",
+            "Saturday": "09:00",
+            "Sunday": "09:00"
+        },
+        "poolpump_stop": {
+            "Monday": "21:00",
+            "Tuesday": "21:00",
+            "Wednesday": "21:00",
+            "Thursday": "21:00",
+            "Friday": "21:00",
+            "Saturday": "21:00",
+            "Sunday": "21:00"
+        },
+        "airtempcorr": "0",
+        "pooltempcorr": "0",
+        "outtempcorr": "0.135",
+        "updateinterval": "5000",
+        "airtempfilter": "15",
+        "airtempcal": "0",
+        "pooltempcal": "0.5",
+        "outtempcal": "-1.8",
+        "airtempinfl": "0.0000005",
+        "latestdrain": "2018-06-01 06:06:26 => 2018-06-01 06:06:36",
+        "watchdog": "3"
+    }
+}
